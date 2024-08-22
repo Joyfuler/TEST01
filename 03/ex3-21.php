@@ -1,15 +1,29 @@
 <?php
-    $string = "";
-    $string .= "<table border='1'>";
-    for ($i=2; $i<=9; $i++) {
-        $string .= "<tr>";
-        for ($j=1; $j<=9; $j++) {
-            $x = $i * $j;
-            $string .= "<td>".$i."x".$j."=".$x."</td>";
+    for ($i=1; $i<=9; $i++){
+        for ($j=1; $j<=$i; $j++){
+            echo "*";
         }
-        $string .= "</tr>";
+        echo "<br>";
     }
-    $string .= "</table>";
 
-    echo $string;
+    echo "<br><br>";
+
+
+    for ($i=9; $i>=1; $i--){
+        for ($j=1; $j<=$i; $j++){
+            echo "*";
+        }
+
+        echo "<br>";
+    }
+
+    for ($i=1; $i<=9; $i++){
+        for ($j=1; $j<= 9 - $i; $j++){
+            echo "&nbsp;";              
+        }
+
+        for ($j=1; $j<=$i; $j++){
+            echo "<br>";
+        }
+    }
 ?>

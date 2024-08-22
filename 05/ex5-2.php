@@ -1,10 +1,7 @@
 <?php
-   echo ceil(3.2)."<br>";
-   echo ceil(3.7)."<br>";
+   echo sqrt(25)."<br>";
+   echo sqrt(2)."<br>";
 
-   echo floor(3.2)."<br>";
-   echo floor(3.7)."<br>";
-
-   echo round(3.2)."<br>";
-   echo round(3.7);
+   echo pow(2,3)."<br>";
+   echo pow(3,4)."<br>";
 ?>

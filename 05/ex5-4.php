@@ -1,5 +1,3 @@
 <?php
-   echo rand(1, 6)."<br>";
-   echo rand(1, 6)."<br>";
-   echo rand(1, 6)."<br>";   
+   echo "로또 첫번째 숫자: ".rand(1,45);
 ?>
