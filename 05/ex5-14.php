@@ -1,7 +1,7 @@
 <?php
-    $str = "PHP is fun!";
-    echo strlen($str)."<br>";
+    $string = "PHP is fun!";
+    echo strlen($string)."<br>";
 
-    $str2 = "거북이";
-    echo strlen($str2);
+    $string2 = "거북이";
+    echo strlen($string2)."<br>";
 ?>

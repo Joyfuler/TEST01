@@ -1,6 +1,6 @@
 <?php
-    $arr = array("010", "1234", "5678");
+    $arr = array("010", "2924", "7998");
     $tel = join("-", $arr);
 
-    echo $tel;    
+    echo $tel;
 ?>

@@ -4,4 +4,7 @@
 
     $str2 = htmlspecialchars_decode($str);
     echo $str2;    
+
+    $str3 = htmlspecialchars($str);
+    echo $str3;
 ?>

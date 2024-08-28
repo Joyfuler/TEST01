@@ -1,18 +1,14 @@
 <?php
-    $current_time = time();
+    $current_time = time(); // 초단위 타임스탬프.
+    $time_diff = 60 * 60 * 24 * 2; // 2일
+    $before_2day = $current_time - $time_diff;
+    $after_2day = $current_time + $time_diff;
 
-    $time_diff = 2 * 24 * 60 * 60;     //  초 단위, 2일의 기간
-    $before_1day = $current_time - $time_diff;
-    $after_1day = $current_time + $time_diff;
+    echo "현재 타임스탬프:".$current_time."<br>";
+    echo "현재시간:".date("Y-m-d I:m:s", $current_time);
 
-    echo "현재 타임스탬프 : ".$current_time."<br>";
-    echo "현재 시간 : ".date("Y-m-d H:i:s", $current_time)."<br>";
-    echo "---------------------------------------<br>";
+    echo "2일전 타임스탬프: ".$before_2day."<br>";
+    echo "2일전 시간:".date("Y-m-d I:m:s", $before_2day);
 
-    echo "2일 전 타임스탬프 : ".$before_1day."<br>";
-    echo "2일 전 시간 : ".date("Y-m-d H:i:s", $before_1day)."<br>";
-    echo "---------------------------------------<br>";
 
-    echo "2일 후 타임스탬프 : ".$after_1day."<br>";
-    echo "2일 후 시간 : ".date("Y-m-d H:i:s", $after_1day)."<br>";
 ?>

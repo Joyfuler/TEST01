@@ -1,14 +1,19 @@
 <?php
     class Member {
-	    private $name;
+        private $name;
 
-	    public function getName() {
-		    return $this->name;
-	    }
+        public function setName($name){
+            $this->name = $name;            
+        }
+
+        public function getName(){
+            return $this->name;
+        }
     }
 
-    $mem = new Member();
+    $member = new Member();
 
-    $mem->name = "홍길동";  // 접근 오류 발생
-    echo "이름 : ".$mem->getName();
+    $member->setName("홍길동");
+    echo "이름:".$member->getName();
+
 ?>

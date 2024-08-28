@@ -1,16 +1,17 @@
 <?php
-    $servername = "localhost";          // 서버명
-    $username = "user";                 // 사용자명
-    $password = "12345";                // 비밀번호
-    $dbname = "sample";                 // DB명
+    $servername = "localhost";
+    $username = "user";
+    $password = "tiger";
+    $dbname = "sample";
 
-    // MySQL 연결하기
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // 연결 체크하기
-    if (!$conn) {
-        die("연결 오류 : ".mysqli_connect_error());
+    if (!$conn){
+        die("연결 오류:".mysqli_connect_error()); // die는 메시지를 출력하고 해당 프로그램을 종료한다.
+        // die는 mysql 연결시 오류 메시지를 반환한다.
     }
-    
-    echo "MySQL에 성공적으로 연결되었습니다!";
+
+    echo "MYSQL에 성공적으로 연결되었습니다.";
+
+
+
 ?>
