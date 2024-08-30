@@ -4,6 +4,8 @@
         public function getName(){
             return $this->name;
         }
+
+        
     }
     
     $mem = new Member();

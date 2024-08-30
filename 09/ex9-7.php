@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";          // 서버명
     $username = "user";                 // 사용자명
-    $password = "12345";                // 비밀번호
+    $password = "tiger";                // 비밀번호
     $dbname = "sample";                 // DB명
 
     // MySQL 연결하기
@@ -14,8 +14,8 @@
     echo "------------------------<br>";
     echo " 이름 전화번호<br>";
     echo "------------------------<br>";
-    while($row = mysqli_fetch_assoc($result)) {
-        echo $row["name"]." ". $row["tel"]."<br>";
+    while ($row = mysqli_fetch_assoc($result)){
+        echo $row["name"].": ".$row['tel']."<br>";
     }
     echo "------------------------<br>";
     

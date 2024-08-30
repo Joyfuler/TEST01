@@ -15,36 +15,46 @@
 			<span class="col4">등록일</span>
 		</li>
 <?php
-	$con = mysqli_connect("localhost", "user", "12345", "sample");		// DB 연결
+	$conn = mysqli_connect("localhost", "user", "tiger", "sample");		// DB 연결
 	$sql = "select * from freeboard order by num desc";		// 일련번호 내림차순 전체 레코드 검색
-	$result = mysqli_query($con, $sql);			// SQL 명령 실행
-	$total_record = mysqli_num_rows($result); // 전체 글 수
+	$result = mysqli_query($conn, $sql);			// SQL 명령 실행
+	$total_record = mysqli_num_rows($result); // 총 줄수.
 
-	$number = $total_record;				// 글 번호 매김
-   	for ($i=0; $i<$total_record; $i++) {
-      	mysqli_data_seek($result, $i); 		// 가져올 레코드로 위치(포인터) 이동      	
-      	$row = mysqli_fetch_assoc($result); // 하나의 레코드 가져오기
+	for ($i=0; $i<$total_record; $i++){
+		mysqli_data_seek($result, $i);
+		$row = mysqli_fetch_assoc($result); // select를 통해 레코드를 가져올 때.
 
-	  	$num         = $row["num"];			// 일련번호
-	  	$name        = $row["name"];		// 이름
-	  	$subject     = $row["subject"];		// 제목
-      	$regist_day  = $row["regist_day"]; 	// 작성일
-?>
+		$num = $row["num"];
+		$name = $row["name"];
+		$subject = $row["subject"];
+		$regist_day = $row["regist_day"];
+	
+?>	
 		<li>
-			<span class="col1"><?=$number?></span>		
-			<span class="col2"><a href="view.php?num=<?=$num?>"><?=$subject?></a></span>
-			<span class="col3"><?=$name?></span>
-			<span class="col4"><?=$regist_day?></span>
-		</li>	
+			<span class = "col1"><?=$num?>
+			</span>
+			<span class = "col2">
+				<a href = "view.php?num=<?=$num?>"><?=$subject?></a>
+			</span>
+			<span class = "col3">
+				<?=$name?>
+			</span>
+			<span class = "col4">
+				<?=$regist_day?>
+			</span>
+		</li>
+
 <?php
-   	   $number--;
-   	}
-   	mysqli_close($con);
+	$num--;
+	}
+
+	mysqli_close($conn);
 ?>
-	    </ul>
-		<ul class="buttons">
-			<li><button onclick="location.href='list.php'">목록</button></li>
-			<li><button onclick="location.href='form.php'">글쓰기</button></li>
-		</ul>		
+
+	</ul>
+	<ul class = "buttons">
+		<li><button onclick = "location.href='list.php'">목록</button></li>
+		<li><button onclick = "location.href='form.php'">글쓰기</button></li>
+	</ul>
 </body>
 </html>
