@@ -35,7 +35,7 @@
       }
       document.member.submit();
    }
-
+   // 초기화 시 입력했던 모든 칸을 빈칸으로 변경하고, id에 커서를 올린다.
    function reset_form() {
       document.member.id.value = "";  
       document.member.pass.value = "";
@@ -49,16 +49,17 @@
 </head>
 <body> 
 <?php    
-    session_start();
+    // 만일 로그인한 상태(세션이 있는 상태)라면 sql을 통해 데이터를 불러오고, 패러미터로 $userid를 사용할 수 있도록 설정한다.
+    session_start(); // 세션 시작.
     if (isset($_SESSION["userid"])) 
         $userid = $_SESSION["userid"];
     else 
         $userid = "";
 
-   	$con = mysqli_connect("localhost", "user", "12345", "sample");
+   	$con = mysqli_connect("localhost", "user", "tiger", "sample");
     $sql    = "select * from members where id='$userid'";
     $result = mysqli_query($con, $sql);
-    $row    = mysqli_fetch_assoc($result);
+    $row    = mysqli_fetch_assoc($result); // java의 resultSet과 비슷...?
 
     $pass = $row["pass"];
     $name = $row["name"];
@@ -69,6 +70,7 @@
     <form name="member" action="modify.php?id=<?=$userid?>" method="post">
 		<h2>회원 정보 수정</h2>
     	<ul class="join_form">
+            <!-- 회원정보 수정이므로, 기존 데이터가 남아 있어야 함. 전달받은 패러미터를 value 안에 대입한다. -->
             <li>
                 <span class="col1">아이디</span>
                 <span class="col2"><?=$userid?></span>                

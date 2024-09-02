@@ -1,14 +1,15 @@
 <?php
-    session_start();
-    if (isset($_SESSION["userid"])) 
+   session_start();
+    if (isset($_SESSION["userid"])) // 넘겨받은 세션이 있다면 대입한다.
         $userid = $_SESSION["userid"];
-    else 
+    else
         $userid = "";
-        
-    if (isset($_SESSION["username"])) 
+
+    if (isset($_SESSION["username"]))
         $username = $_SESSION["username"];
-    else 
+    else
         $username = "";
+    
 ?>	
 <!DOCTYPE html>
 <html>
@@ -18,30 +19,31 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h3 class="logo">
-            <a href="index.php">PHP+MySQL입문</a>
+    <div class = "header">
+        <h3 class = "logo">
+            <a href = "index.php">PHP + MYSQL 입문 </a>
         </h3>
-        <div class="top">
+        <div class = "top">
 <?php
-    if(!$userid) {
-?>                
-                <span><a href="form.php">회원가입</a> </span>
-                <span> | </span>
-                <span><a href="login_form.php">로그인</a></span>
+    if(!$userid){
+?>
+
+        <span><a href = "form.php">회원가입</a></span>
+        <span> | </span>
+        <span> <a href = "login_form.php"> 로그인</a></span>
 <?php
     } else {
-                $logged = $username."(".$userid.")";
+            $logged = $username."(".$userid.")";
 ?>
-                <span><?=$logged?> </span>
-                <span> | </span>
-                <span><a href="logout.php">로그아웃</a> </span>
-                <span> | </span>
-                <span><a href="modify_form.php">정보수정</a></span>
-<?php
+    <span><?=$logged?></span>
+    <span> | </span>
+    <span><a href = "logout.php">로그아웃</a></span>
+    <span> | </span>
+    <span><a href = "modify_form.php">정보수정</a></span>
+<?php 
     }
 ?>
-        </div> <!-- top -->
-    </div> <!-- header -->
+    </div><!-- top -->
+</div><!-- header -->
 </body>
 </html>

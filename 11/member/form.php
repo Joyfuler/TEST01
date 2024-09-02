@@ -39,7 +39,7 @@
       }
       document.member.submit();
    }
-   function reset_form() {
+   function reset_form() { // 리셋 버튼을 누르는 경우 다음과 같이 모두 고백 처리 후 id 입력창에 커서가 깜빡임.
       document.member.id.value = "";  
       document.member.pass.value = "";
       document.member.pass_confirm.value = "";
@@ -48,7 +48,7 @@
       document.member.id.focus();
       return;
    }
-   function check_id() {
+   function check_id() { // 패러미터에 입력한 아이디를 넣어 중복되어 있는지를 check_id.php로 넘겨 검증한다.
      window.open("check_id.php?id=" + document.member.id.value,
          "IDcheck",
           "left=700,top=300,width=380,height=160,scrollbars=no,resizable=yes");
