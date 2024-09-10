@@ -18,7 +18,7 @@
       include "../include/db_connect.php";
 
       $sql = "select * from _mem where id='$id'";
-      $result = mysqli_query($con, $sql);
+      $result = mysqli_query($conn, $sql);
 
       $num_record = mysqli_num_rows($result);
 
@@ -29,7 +29,7 @@
       else {
          echo $id." 아이디는 사용 가능합니다.<br>";
       }    
-      mysqli_close($con);
+      mysqli_close($conn);
    }
 ?>
    </div>

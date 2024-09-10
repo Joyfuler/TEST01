@@ -4,7 +4,7 @@
 
     include "../include/db_connect.php";
 	$sql = "select * from $table where num=$num";	// 레코드 검색
-	$result = mysqli_query($con, $sql);		// SQL 명령 실행
+	$result = mysqli_query($conn, $sql);		// SQL 명령 실행
 
 	$row = mysqli_fetch_assoc($result);
 
@@ -20,7 +20,7 @@
 	$regist_day = date("Y-m-d (H:i)");  // UTC 기준 현재 '년-월-일 (시:분)'
 	$file_name  = $row["file_name"];
 
-	mysqli_close($con);
+	mysqli_close($conn);
 ?>	
 <script>
   	function check_input() {		

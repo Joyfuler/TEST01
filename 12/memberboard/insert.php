@@ -27,7 +27,7 @@
 
 	if ($upfile_name && !$upfile_error)
 	{
-		$file = explode(".", $upfile_name);
+		$file = explode(".", $upfile_name); // 두개를 나누어 배열로 저장한다. python의 split과 동일한 함수 기능.
 		$file_name = $file[0];
 		$file_ext  = $file[1];
 
@@ -63,7 +63,7 @@
 		$copied_file_name = "";
 	}
 
-    $con = mysqli_connect("localhost", "user", "12345", "sample");
+    $con = mysqli_connect("localhost", "user", "tiger", "sample");
 	$sql = "insert into memberboard (id, name, subject, content, regist_day, ";
 	$sql .= "file_name, file_type, file_copied) ";
 	$sql .= "values('$userid', '$username', '$subject', '$content', '$regist_day', ";

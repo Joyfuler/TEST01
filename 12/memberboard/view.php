@@ -1,25 +1,23 @@
 <?php
+	// url 패러미터로 전달받으므로 기본적으로 get 형태로 전달받는다.
 	$num  = $_GET["num"];
 	$page  = $_GET["page"];
 
-	$con = mysqli_connect("localhost", "user", "12345", "sample");	// DB 접속
-	$sql = "select * from memberboard where num=$num";	// 레코드 검색
-	$result = mysqli_query($con, $sql);			// SQL 명령 실행
+	$conn = mysqli_connect("localhost", "user", "tiger", "sample");
+	$sql = "select * from memberboard where num=$num";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
+	$id = $row["id"]; // 결과로 받아온 것 중 id컬럼 내용을 담는다.
+	$name = $row["name"];
+	$subject = $row["subject"];
+	$regist_day = $row["regist_day"];
+	$content = $row["content"];
+	$content = str_replace(" ", "&nbsp;", $content); // 띄어쓰기가 있다면 html의 띄어쓰기로 변경한다.
+	$content = str_replace("\n", "<br>", $content); // 엔터가 있다면 html의 엔터로 변경한다.
 
-	$row = mysqli_fetch_assoc($result);			// 레코드 가져오기
-
-	$id      = $row["id"];						// 아이디
-	$name      = $row["name"];					// 이름
-	$subject    = $row["subject"];				// 제목
-	$regist_day   = $row["regist_day"];			// 작성일
-
-	$content    = $row["content"];				// 내용
-	$content = str_replace(" ", "&nbsp;", $content);		// 공백 변환
-	$content = str_replace("\n", "<br>", $content);			// 줄바꿈 변환
-
-	$file_name    = $row["file_name"];
-	$file_type    = $row["file_type"];
-	$file_copied  = $row["file_copied"];	
+	$file_name = $row["file_name"];
+	$file_type = $row["file_type"];
+	$file_copied = $row["file_copied"];
 ?>	
 <!DOCTYPE html>
 <html>
@@ -37,14 +35,13 @@
 		</li>
 		<li class="row2">
 		<?php
-			if($file_name) {
-				$file_path = "./data/".$file_copied;
+			if($file_name) { // 첨부된 파일이 있다면
+				$file_path = "./data/".$file_copied;  
 				$file_size = filesize($file_path);
-
 				echo "▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
 			       	<a href='download.php?num=$num&file_copied=$file_copied&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
 			}	
-			echo $content;     // 글 내용 출력
+			echo $content; // 글 내용 출력
 		?>
 		</li>		
 	</ul>

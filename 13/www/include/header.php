@@ -1,21 +1,16 @@
 <?php
-    session_start();
-
-    if (isset($_SESSION["userid"])) 
+    session_start(); // 세션 개시.
+    if (isset($_SESSION["userid"])){ // 로그인한 상태라면
         $userid = $_SESSION["userid"];
-    else {
-        $userid = "";
-    }
-    
-    if (isset($_SESSION["username"])) 
-        $username = $_SESSION["username"];
-    else 
-        $username = "";
-    
-    if (isset($_SESSION["userlevel"])) 
+        $username = $_SESSION["username"];        
         $userlevel = $_SESSION["userlevel"];
-    else 
+    }
+    else {
+        $userid = ""; //로그인하지 않았다면 userid패러미터에는 아무것도 넣지 않는다.
         $userlevel = "";
+        $username = "";
+    }
+        
 ?>
 <!DOCTYPE html>
 <html>

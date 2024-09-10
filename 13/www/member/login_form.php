@@ -12,7 +12,7 @@
         	document.login.pass.focus();
         	return;
     	}
-    	document.login.submit();
+    	document.login.submit(); // login name을 가진 form을 제출한다.
 	}
 </script>	
 <form name="login" method="post" action="login.php">		       	

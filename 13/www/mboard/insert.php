@@ -84,9 +84,9 @@
 	$sql .= "values('$userid', '$username', '$subject', '$content', '$is_html', '$regist_day', ";
 	$sql .= "'$upfile_name', '$upfile_type', '$copied_file_name')";
 
-	mysqli_query($con, $sql);  // $sql에 저장된 명령 실행
+	mysqli_query($conn, $sql);  // $sql에 저장된 명령 실행
 
-	mysqli_close($con);       // DB 연결 끊기
+	mysqli_close($conn);       // DB 연결 끊기
 
 	// 목록 페이지로 이동
 	echo "<script>

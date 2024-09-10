@@ -39,9 +39,9 @@
 	$sql = "update $table set subject='$subject', is_html='$is_html', ";	// 수정 명령
 	$sql .= "content='$content', regist_day='$regist_day' where num=$num";
 
-	mysqli_query($con, $sql);  // SQL 명령 실행
+	mysqli_query($conn, $sql);  // SQL 명령 실행
 
-	mysqli_close($con);       // DB 연결 끊기
+	mysqli_close($conn);       // DB 연결 끊기
 
 	echo "
 	   <script>

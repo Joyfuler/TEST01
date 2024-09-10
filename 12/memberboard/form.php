@@ -1,5 +1,6 @@
 <?php
 		include "session.php"; 	// 세션 처리
+		// session.php에 있는 코드를 그대로 사용 가능.
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,18 +10,18 @@
 <link rel="stylesheet" href="style.css">
 <script>
   	function check_input() {	
-      	if (!document.board.subject.value) {	// 제목 체크
+      	if (!document.board.subject.value) {	// board form 안의 subject name의 값.
           	alert("제목을 입력하세요!");
           	document.board.subject.focus();
           	return;
 		}
-      	if (!document.board.content.value) {	// 내용 체크
+      	if (!document.board.content.value) {	// board form 안의 content name의 값.
           	alert("내용을 입력하세요!");    
           	document.board.content.focus();
           	return;
       	}
 	  
-      	document.board.submit();
+      	document.board.submit(); // board form을 제출한다.
    	}
 </script>
 </head>

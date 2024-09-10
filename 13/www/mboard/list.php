@@ -9,20 +9,20 @@
 	</li>
 <?php
 	if (isset($_GET["page"]))
-		$page = $_GET["page"];
+		$page = $_GET["page"]; // 받은 페이지 패러미터가 있다면 page는 해당 패러미터 값으로 대입.
 	else
-		$page = 1;
+		$page = 1; // 기본적으로는 1페이지.
 
 	include "../include/db_connect.php";
-	$sql = "select * from $table order by num desc";	// 일련번호 내림차순 검색
-	$result = mysqli_query($con, $sql);			// SQL 명령 실행
+	$sql = "select * from $table order by num desc";	// 받은 테이블 패러미터에 따라 동적으로 다른 검색 sql을 수행한다.
+	$result = mysqli_query($conn, $sql);			// SQL 명령 실행 (reulstSet?)
 
 	$total_record = mysqli_num_rows($result); // 전체 글 수
 
 	// 전체 페이지 수($total_page) 계산 
-	if ($total_record % $scale == 0)     
+	if ($total_record % $scale == 0) // 딱 떨어지는 경우 한 페이지당 표시되는 페이지만큼 표시.
 		$total_page = floor($total_record/$scale);      
-	else
+	else // 딱 떨어지지 않으면 표시되는 페이지만큼 나눈 후 1을 더한다.
 		$total_page = floor($total_record/$scale) + 1; 
  
 	// 표시할 페이지($page)에 따라 $start 계산  
@@ -42,10 +42,10 @@
 		$file_copied  = $row["file_copied"];	// 저장된 파일
 
 		if ($file_name) {
-			if ($table == "_youtube")
+			if ($table == "_youtube") //받은 패러미터가 _youtube면 youtube 이미지를 표시한다.
       			$file_image = "<img src='../img/youtube.png' height='20'>";
 			else
-				$file_image = "<img src='../img/file.png'>";
+				$file_image = "<img src='../img/file.png'>"; // youtube 테이블이 아닌 경우는 첨부 파일을 그대로 표시한다.
 		}
       	else
       		$file_image = " ";		  
@@ -65,14 +65,14 @@
 					?>
 			</a>
 					<?php
-						if($table=="_qna") {
+						if($table=="_qna") { // qna 게시판이라면 qna게시판의 리플수를 가져와야 한다.
 							$table_ripple = $table."_ripple";
 
 							$sql = "select * from $table_ripple where parent=$num";
-							$result2 = mysqli_query($con, $sql);
+							$result2 = mysqli_query($conn, $sql);
 							$num_ripple = mysqli_num_rows($result2);
   
-						  	if ($num_ripple)
+						  	if ($num_ripple) // 리플이 존재한다면 제목 뒤에 [3] 등으로 표시한다.
 							   echo " [$num_ripple]";
 						}
 	  				?>
@@ -84,13 +84,13 @@
 <?php
    	   $number--;
    	}
-   	mysqli_close($con);
+   	mysqli_close($conn);
 ?>
 	</ul>
 <!-- 페이지 내비게이션 -->
 	<ul class="page_num"> 	
 <?php
-	if ($total_page>=2 && $page >= 2) {
+	if ($total_page>=2 && $page >= 2) { // 만일 2페이지 이상 존재하는 경우는 이전 페이지를 표시해야 함.
 		$new_page = $page-1;
 		echo "<li><a href='index.php?type=list&table=$table&page=$new_page'>◀ </a> </li>";
 	}		
@@ -99,13 +99,13 @@
 
    	// 게시판 목록 하단에 페이지 링크 번호 출력
    	for ($i=1; $i<=$total_page; $i++) {
-		if ($page == $i)     // 현재 페이지 번호 링크 안함
+		if ($page == $i)     // 현재 페이지와 동일한 숫자는 링크 대신 볼드체를 사용한다.
 			echo "<li><b> $i </b></li>";
-		else
+		else // 다른 페이지라면 해당 페이지로 이동한다.
 			echo "<li> <a href='index.php?type=list&table=$table&page=$i'> $i </a> <li>";
    	}
    	if ($total_page>=2 && $page != $total_page)	{
-		$new_page = $page+1;	
+		$new_page = $page+1; // 총 페이지가 2페이지가 넘고, 마지막 페이지가 아닌 경우는 다음 페이지를 표시해야 함.
 		echo "<li> <a href='index.php?type=list&table=$table&page=$new_page'> ▶</a> </li>";
 	}
 	else 
